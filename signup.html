@@ -40,12 +40,57 @@
         </ul>
       </div>
     </header>
-    <main class="d-flex flex-column align-items-center flex-grow-1 pt-5"></main>
+    <main
+      class="signup-page d-flex mw-1200 m-auto align-items-start flex-grow-1 pt-5"
+    >
+      <form
+        action="/profile/index.html"
+        class="row gap-4 justify-content-center p-5 h-100 bg-secondary form-container"
+      >
+        <h2 class="p-0">Create an account</h2>
+        <hr class="m-0 mb-4" />
+        <!-- username -->
+        <div class="row justify-content-center p-0">
+          <label for="username" class="text-uppercase p-0">Username</label>
+          <input type="text" class="p-2 opacity-50" id="username" required />
+        </div>
+        <!-- email -->
+        <div class="row justify-content-center p-0">
+          <label for="email" class="text-uppercase p-0">Email</label>
+          <input type="text" class="p-2 opacity-50" id="email" required />
+        </div>
+        <!-- password -->
+        <div class="row justify-content-center p-0">
+          <label for="password" class="text-uppercase p-0">Password</label>
+          <input
+            type="password"
+            class="p-2 opacity-50"
+            id="password"
+            required
+            minlength="8"
+          />
+        </div>
+        <button
+          class="btn btn-blue text-white text-uppercase rounded-pill m-5 mb-0"
+        >
+          Create an account
+        </button>
+      </form>
+      <img
+        src="/images/vintage-lamp.jpg"
+        class="create-img"
+        alt="a vintage lamp in a living room"
+      />
+    </main>
     <footer
-      class="bg-primary text-light d-flex justify-content-center align-items-center p-3"
+      class="bg-primary text-light d-flex justify-content-center align-items-center p-3 mt-lg-5 mt-0"
     >
       <div class="text-center">
-        <img src="/images/logo.png" class="mb-2" />
+        <img
+          src="/images/logo.png"
+          class="mb-2"
+          alt="Vintage Charm Bids logo"
+        />
         <p class="mb-0 fs-8 fw-lighter">Copyright © Vintage Charm Bids 2024</p>
       </div>
     </footer>
