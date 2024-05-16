@@ -42,12 +42,69 @@
         </ul>
       </div>
     </header>
-    <main class="d-flex flex-column align-items-center flex-grow-1 pt-5"></main>
+    <main
+      class="d-flex flex-column align-items-center flex-grow-1 pt-5 bg-light"
+    >
+      <form
+        class="row gap-4 justify-content-center p-5 mb-5 h-100 background form-container mw-800"
+        id="createListing"
+      >
+        <h2 class="p-0 m-0">Create an auction listing</h2>
+        <hr class="m-0 mb-4" />
+        <!-- title -->
+        <div class="row justify-content-center p-0">
+          <label for="title" class="text-uppercase p-0">Title</label>
+          <input
+            type="text"
+            class="p-2 opacity-50"
+            id="title"
+            required
+            maxlength="50"
+          />
+        </div>
+        <!-- description -->
+        <div class="row justify-content-center p-0">
+          <label for="description" class="text-uppercase p-0"
+            >Description for the item</label
+          >
+          <textarea
+            type="text"
+            class="p-2 opacity-50"
+            id="description"
+            required
+            maxlength="300"
+          ></textarea>
+        </div>
+        <!-- deadline -->
+        <div class="row justify-content-center p-0">
+          <label for="deadline" class="text-uppercase p-0">Deadline</label>
+          <input type="date" class="p-2 opacity-50" id="deadline" required />
+        </div>
+        <!-- media -->
+        <div class="row justify-content-center p-0">
+          <label for="media" class="text-uppercase p-0"
+            >Provide a link to your image</label
+          >
+          <input type="url" class="p-2 opacity-50" id="media" />
+        </div>
+
+        <button
+          class="btn btn-custom text-white text-uppercase rounded-pill m-5 mb-0"
+          id="post-btn"
+        >
+          Post auction
+        </button>
+      </form>
+    </main>
     <footer
       class="bg-primary text-light d-flex justify-content-center align-items-center p-3"
     >
       <div class="text-center">
-        <img src="/images/logo.png" class="mb-2" />
+        <img
+          src="/images/logo.png"
+          class="mb-2"
+          alt="Vintage Charm Bids logo"
+        />
         <p class="mb-0 fs-8 fw-lighter">Copyright © Vintage Charm Bids 2024</p>
       </div>
     </footer>

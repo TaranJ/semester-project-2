@@ -4,6 +4,10 @@
   max-width: 1200px;
 }
 
+.mw-800 {
+  max-width: 800px;
+}
+
 .hero-img {
   background-image: url(/images/bicycle-1872682_1920.jpg);
   background-size: cover;
@@ -36,6 +40,10 @@
   font-family: "Roboto Condensed", sans-serif;
   letter-spacing: 1px;
   font-weight: 400;
+}
+
+#createListing {
+  border: solid 1px;
 }
 
 @media (max-width: 1000px) {
