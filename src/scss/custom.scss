@@ -7,3 +7,23 @@
   background-size: cover;
   height: 500px;
 }
+
+.btn-custom {
+  background-color: #db8b51;
+  font-family: "Roboto Condensed", sans-serif;
+  letter-spacing: 2px;
+  font-weight: 300;
+}
+
+.btn-custom:hover {
+  background-color: #cf946a;
+  border: solid black 1px;
+}
+
+.btn-white,
+.btn-white:hover {
+  background-color: #ede1ca;
+  font-family: "Roboto Condensed", sans-serif;
+  letter-spacing: 1px;
+  font-weight: 400;
+}
