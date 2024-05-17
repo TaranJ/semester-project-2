@@ -35,15 +35,13 @@ jobs:
         run: npm ci
       - name: Build the SASS
         run: npm run build
-      - name: List build directory
-        run: ls -la ./dist/css 
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
           # Upload entire repository
-          path: './dist'
+          path: "."
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
