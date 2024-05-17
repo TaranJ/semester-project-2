@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="" />
     <title>Vintage Charm Bids</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -41,7 +42,49 @@
       </div>
     </header>
     <main class="d-flex flex-column align-items-center flex-grow-1 pt-5">
-      <section class="profile-container"></section>
+      <section
+        class="profile-container d-flex gap-5 flex-column flex-md-row justify-content-center"
+      >
+        <p>Log in to view your profile information</p>
+        <div class="d-flex align-items-center">
+          <a
+            href="/login.html"
+            class="text-nowrap text-uppercase text-decoration-none"
+            >Log in</a
+          >
+          <a href="/signup.html"
+            ><button
+              class="btn btn-custom ms-3 text-nowrap text-white text-uppercase rounded-pill p-4 pt-2 pb-2"
+            >
+              Create account
+            </button></a
+          >
+        </div>
+        `;
+      </section>
+      <section class="update-profile mt-5 mb-5 d-none">
+        <form
+          class="row gap-4 justify-content-center p-5 mb-5 h-100 bg-light mw-800"
+          id="updateProfile"
+        >
+          <h2 class="p-0 m-0">Update your avatar</h2>
+          <hr class="m-0 mb-4" />
+          <!-- media -->
+          <div class="row justify-content-center p-0">
+            <label for="avatar" class="text-uppercase p-0"
+              >Provide a link to your new image</label
+            >
+            <input type="url" class="p-2 opacity-50" id="avatar" required />
+          </div>
+
+          <button
+            class="btn btn-custom text-white text-uppercase rounded-pill m-5 mb-0"
+            id="post-btn"
+          >
+            Update
+          </button>
+        </form>
+      </section>
     </main>
     <footer
       class="bg-primary text-light d-flex justify-content-center align-items-center p-3"
@@ -55,5 +98,6 @@
         <p class="mb-0 fs-8 fw-lighter">Copyright © Vintage Charm Bids 2024</p>
       </div>
     </footer>
+    <script src="/src/js/profile.js" type="module"></script>
   </body>
 </html>
