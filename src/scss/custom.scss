@@ -42,6 +42,14 @@
   font-weight: 400;
 }
 
+.btn-cyan,
+.btn-cyan:hover {
+  background-color: $cyan;
+  font-family: "Roboto Condensed", sans-serif;
+  letter-spacing: 1px;
+  font-weight: 400;
+}
+
 #createListing {
   border: solid 1px;
 }
