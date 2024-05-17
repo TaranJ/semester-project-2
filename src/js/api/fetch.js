@@ -14,7 +14,7 @@ let listings = [];
 // Fetches posts from the API
 export async function getListings() {
   try {
-    const response = await fetch(APIBase + listingsURL + "?_author=true", {
+    const response = await fetch(APIBase + listingsURL, {
       headers: {
         Authorization: `Bearer ${load("token")}`,
         "X-Noroff-API-Key": APIKey,
