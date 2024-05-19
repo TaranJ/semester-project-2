@@ -1,5 +1,6 @@
+import { setPlaceBidListener } from "../api/bid.js";
 import { getSingleListing } from "../api/fetch.js";
-import { listingContainer } from "./constants.js";
+import { listingContainer, meta } from "./constants.js";
 import { displayError } from "./error.js";
 
 export async function displayListing() {
@@ -19,19 +20,36 @@ export async function displayListing() {
 }
 
 export function createHTMLListing(listing) {
-  // const newDate = new Date(post.created);
-  // const date = newDate.toLocaleDateString("en-GB");
+  const newDate = new Date(listing.endsAt);
+  const date = newDate.toLocaleDateString("en-GB");
 
-  //   meta.content = ` Check out ${listing.seller.name}'s latest post on Pawfinity: ${listing.title}. Connect, share, and celebrate with fellow pet lovers. The perfect space for wagging tails and endless smiles. Join the fun now!`;
+  meta.content = ` Check out ${listing.seller.name}'s listing: ${listing.title}. Join us at Vintage Charm Bids to place your bid now!`;
 
-  listingContainer.innerHTML += `<h1 class="p-2 p-sm-0 pt-sm-5 pb-sm-3 h3 text-uppercase">${listing.title}</h1>
+  // Calculate the highest bid amount
+  const highestBid = listing.bids.length > 0 ? Math.max(...listing.bids.map((bid) => bid.amount)) : "No bids yet";
+
+  listingContainer.innerHTML += `<div class="row">
   
-  <img src="${listing.media[0].url}" alt="${listing.media[0].alt}" class="w-100 p-0 post-page-img" />
+  <div class="col-12 col-lg-6 p-0 p-lg-4 pb-lg-0 pt-lg-0">
+            <img src="${listing.media[0].url}" alt="${listing.media[0].alt}" class="img-fluid w-100 listing-page-img" />
+          </div>
+          <div class="col-12 col-lg-6 d-flex flex-column justify-content-between p-3 pt-2 pb-5 p-xl-0 pt-sm-2 pb-sm-3">
+          <div>
+            <h1 class="p-2 p-sm-0 m-0 h5">${listing.title}</h1>
+            <div class="d-flex justify-content-between">
+              <p>${listing.seller.name}</p>
+              <p class="text-danger">Closes on ${date}</p>
+            </div>
+          </div>
+            <p>${listing.description}</p>
+          <div>
+            <div class="d-flex gap-4">
+              <p>Current</p>
+              <p class="text-danger">${highestBid}</p>
+            </div>
+            <button class="btn btn-custom text-white text-uppercase" id="bid-btn">Place bid</button></div>
+          </div></div>
   
-  <div class="d-flex justify-content-between p-2 pt-2 pb-5 p-sm-0 pt-sm-2 pb-sm-3">
-      <p class="col-10 col-lg-9 col-xl-10 text-black mb-0"> Posted by ${listing.seller.name} </p>
-      <i class="fa-regular fa-heart"></i>
-  </div>
-  <p>${listing.description}</p>
     `;
+  setPlaceBidListener();
 }
