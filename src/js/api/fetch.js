@@ -5,16 +5,16 @@ import { APIBase, APIKey, listingsURL } from "./constants.js";
 let listings = [];
 
 // Retrieves the query string from the current URL
-// const queryString = document.location.search;
+const queryString = document.location.search;
 // // Parses the query string to extract URL parameters
-// const params = new URLSearchParams(queryString);
+const params = new URLSearchParams(queryString);
 // // Retrieves the value of the "id" parameter from the URL.
-// const id = params.get("id");
+const id = params.get("id");
 
 // Fetches posts from the API
 export async function getListings() {
   try {
-    const response = await fetch(APIBase + listingsURL + "?_author=true", {
+    const response = await fetch(APIBase + listingsURL + "?_seller=true&_active=true", {
       headers: {
         Authorization: `Bearer ${load("token")}`,
         "X-Noroff-API-Key": APIKey,
@@ -47,6 +47,23 @@ export async function getProfile() {
     return profile;
   } catch (error) {
     console.error("Error fetching profile:", error.message);
-    throw error; // Re-throw the error to be caught in displayProfile
+    throw error;
+  }
+}
+
+export async function getSingleListing() {
+  try {
+    const response = await fetch(APIBase + listingsURL + "/" + id + "?_seller=true&_bids=true", {
+      headers: {
+        Authorization: `Bearer ${load("token")}`,
+        "X-Noroff-API-Key": APIKey,
+      },
+    });
+    if (!response.ok) {
+      throw new Error("Failed to fetch posts");
+    }
+    return await response.json();
+  } catch (error) {
+    console.error("Error fetching post:", error.message);
   }
 }

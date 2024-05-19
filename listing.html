@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="" />
     <title>Vintage Charm Bids</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -41,7 +42,29 @@
       </div>
     </header>
     <main class="d-flex flex-column align-items-center flex-grow-1 pt-5">
-      <section class="listing-container"></section>
+      <section class="listing-container container-fluid mw-1200 mb-5"></section>
+      <section class="bidding-container mt-5 mb-5 d-none">
+        <form
+          class="row gap-4 justify-content-center p-5 mb-5 h-100 bg-light mw-800"
+          id="placeBid"
+        >
+          <h2 class="p-0 m-0">Place your bid</h2>
+          <hr class="m-0 mb-4" />
+          <div class="row justify-content-center p-0">
+            <label for="bid" class="text-uppercase p-0"
+              >How much would you like to bid?</label
+            >
+            <input type="number" class="p-2 opacity-50" id="bid" required />
+          </div>
+
+          <button
+            class="btn btn-custom text-white text-uppercase rounded-pill m-5 mb-0"
+            id="post-btn"
+          >
+            Place bid
+          </button>
+        </form>
+      </section>
       <section class="recommended-auctions"></section>
     </main>
     <footer
@@ -56,5 +79,6 @@
         <p class="mb-0 fs-8 fw-lighter">Copyright © Vintage Charm Bids 2024</p>
       </div>
     </footer>
+    <script src="/src/js/listing.js" type="module"></script>
   </body>
 </html>

@@ -1,3 +1,5 @@
-import { checkIfLoggedIn } from "./ui/logindisplay.js";
+import { setUploadListener } from "./api/createlisting.js";
+import { handleNoUserForPostCreation } from "./ui/logindisplay.js";
 
-checkIfLoggedIn();
+handleNoUserForPostCreation();
+setUploadListener();
