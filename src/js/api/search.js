@@ -35,7 +35,10 @@ export function clearPreviousPosts() {
 }
 
 export function attachSearchEventListener() {
-  if (window.location.pathname === "/feed.html") {
+  const currentPath = window.location.pathname;
+  const isFeedPage = currentPath.includes("feed");
+
+  if (isFeedPage) {
     searchField.addEventListener("input", function () {
       const query = this.value.trim();
       search(query);
