@@ -45,10 +45,10 @@ export function createHTMLListings(listings) {
   let maxListings = 20; // Default to 20
 
   // Set maxListings based on the current page
-  if (currentPath === "/index.html" || currentPath === "/listing.html" || currentPath === "/profile.html") {
-    maxListings = 4;
-  } else if (currentPath === "/feed.html") {
+  if (currentPath === "/feed.html") {
     maxListings = 40;
+  } else {
+    maxListings = 4;
   }
 
   // Filter listings to only include those with valid media URLs
