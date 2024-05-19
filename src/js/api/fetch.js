@@ -31,6 +31,26 @@ export async function getListings() {
   }
 }
 
+export async function getListingsForProfile() {
+  try {
+    const localProfile = load("profile");
+    const response = await fetch(APIBase + "/auction/profiles/" + localProfile.name + "/listings", {
+      headers: {
+        Authorization: `Bearer ${load("token")}`,
+        "X-Noroff-API-Key": APIKey,
+      },
+    });
+    if (!response.ok) {
+      throw new Error("Failed to fetch posts");
+    }
+    listings = await response.json();
+    console.log(listings);
+    return listings;
+  } catch (error) {
+    console.error("Error fetching posts:", error.message);
+  }
+}
+
 export async function getProfile() {
   try {
     const localProfile = load("profile");

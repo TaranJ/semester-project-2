@@ -1,7 +1,9 @@
 import { logout } from "../api/auth/logout.js";
-import { getProfile } from "../api/fetch.js";
-import { meta, profileContainer } from "./constants.js";
+import { getListingsForProfile, getProfile } from "../api/fetch.js";
+import { latestAuctions, loader, meta, profileContainer } from "./constants.js";
 import { setEditProfileListener } from "./edit.js";
+import { displayError } from "./error.js";
+import { createHTMLListings } from "./listings.js";
 
 export async function displayProfile() {
   try {
@@ -50,4 +52,19 @@ export async function createHTMLForProfile(profile) {
 
 export function setLogoutListener() {
   document.getElementById("logout-btn").addEventListener("click", logout);
+}
+
+export async function displayProfileListings() {
+  try {
+    const result = await getListingsForProfile();
+    const posts = result.data;
+
+    loader.style.display = "none";
+    latestAuctions.classList.remove("d-none");
+    createHTMLListings(posts);
+  } catch (error) {
+    loader.style.display = "none";
+    latestAuctions.innerHTML += displayError(`Something went wrong ˙◠˙ <br> Please try again later!`);
+    console.error("Error displaying posts:", error);
+  }
 }
