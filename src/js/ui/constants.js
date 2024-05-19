@@ -6,3 +6,4 @@ export const createForm = document.getElementById("createListing");
 export const listingContainer = document.querySelector(".listing-container");
 export const searchField = document.getElementById("search-input");
 export const biddingContainer = document.querySelector(".bidding-container");
+export const loader = document.querySelector(".loader");

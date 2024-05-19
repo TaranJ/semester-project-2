@@ -1,5 +1,6 @@
 import { load } from "../storage/load.js";
 import { biddingContainer } from "../ui/constants.js";
+import { handleNoUserForBidding } from "../ui/logindisplay.js";
 import { APIBase, APIKey, listingsURL } from "./constants.js";
 
 const queryString = document.location.search;
@@ -63,5 +64,10 @@ export async function handleBidding() {
 }
 
 export function setPlaceBidListener() {
-  document.getElementById("bid-btn").addEventListener("click", openBidder);
+  const localProfile = load("profile");
+  if (!localProfile || !localProfile.name) {
+    document.getElementById("bid-btn").addEventListener("click", handleNoUserForBidding);
+  } else {
+    document.getElementById("bid-btn").addEventListener("click", openBidder);
+  }
 }

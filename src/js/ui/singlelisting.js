@@ -1,6 +1,6 @@
 import { setPlaceBidListener } from "../api/bid.js";
 import { getSingleListing } from "../api/fetch.js";
-import { listingContainer, meta } from "./constants.js";
+import { listingContainer, loader, meta } from "./constants.js";
 import { displayError } from "./error.js";
 
 export async function displayListing() {
@@ -8,11 +8,11 @@ export async function displayListing() {
     const result = await getSingleListing();
     const listing = result.data;
 
-    // loader.style.display = "none";
+    loader.style.display = "none";
     console.log(listing);
     createHTMLListing(listing);
   } catch (error) {
-    // loader.style.display = "none";
+    loader.style.display = "none";
     listingContainer.innerHTML += displayError(`Something went wrong ˙◠˙ <br> Please try again later!`);
     console.error("Failed to display listing:", error);
     throw error;
