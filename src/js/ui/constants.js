@@ -8,3 +8,5 @@ export const searchField = document.getElementById("search-input");
 export const biddingContainer = document.querySelector(".bidding-container");
 export const loader = document.querySelector(".loader");
 export const latestAuctions = document.querySelector(".latest-auctions");
+export const errSignup = document.getElementById("signup-error");
+export const errLogin = document.getElementById("login-error");

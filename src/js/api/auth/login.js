@@ -1,4 +1,5 @@
 import { save } from "../../storage/save.js";
+import { errLogin } from "../../ui/constants.js";
 import { APIBase, loginURL } from "../constants.js";
 
 /**
@@ -44,7 +45,7 @@ export async function login(email, password) {
     window.location.href = "/profile.html";
     return profile;
   } else if (response.status === 401 || response.status === 400) {
-    // errLogin.classList.remove("d-none");
+    errLogin.classList.remove("d-none");
     throw new Error("Invalid email or password. Please try again.");
   } else {
     throw new Error("Could not login the account");
