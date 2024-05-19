@@ -15,7 +15,6 @@ export async function displayListing() {
     const listing = result.data;
 
     loader.style.display = "none";
-    console.log(listing);
     createHTMLListing(listing);
   } catch (error) {
     loader.style.display = "none";

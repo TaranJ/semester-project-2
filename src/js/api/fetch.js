@@ -29,7 +29,6 @@ export async function getListings() {
       throw new Error("Failed to fetch listings");
     }
     listings = await response.json();
-    console.log(listings);
     return listings;
   } catch (error) {
     console.error("Error fetching listings:", error.message);
@@ -55,7 +54,6 @@ export async function getListingsForProfile() {
       throw new Error("Failed to fetch listings");
     }
     listings = await response.json();
-    console.log(listings);
     return listings;
   } catch (error) {
     console.error("Error fetching listings:", error.message);
