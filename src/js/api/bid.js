@@ -40,7 +40,6 @@ export async function bidOnListing(bidData) {
     }
 
     const responseData = await response.json();
-    console.log("Bid placed successfully:", responseData);
     return responseData;
   } catch (error) {
     console.error("Error placing bid:", error.message);

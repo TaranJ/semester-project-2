@@ -74,15 +74,15 @@ export function createHTMLListings(listings) {
     const date = newDate.toLocaleDateString("en-GB");
 
     feedContainer.innerHTML += ` <div class="col-12 col-md-6 col-lg-3 mb-4">
-      <a href="listing.html?id=${listing.id}" class="text-decoration-none">
-        <div class="card listing-bg border-0">
-          <img src="${listing.media[0].url}" alt="${listing.media[0].alt}" class="listing-img m-2" />
-          <div class="card-body">
-            <h2 class="condensed text-dark fs-6">${listing.title}</h2>
-            <p class="fs-7">Bidding ends ${date}</p>
-          </div>
+    <a href="listing.html?id=${listing.id}" class="text-decoration-none">
+      <div class="card listing-bg border-0 w-100">
+        <img src="${listing.media[0].url}" alt="${listing.media[0].alt}" class="listing-img m-2" />
+        <div class="card-body">
+          <h2 class="condensed text-dark fs-6">${listing.title}</h2>
+          <p class="fs-7">Bidding ends ${date}</p>
         </div>
-      </a>
-    </div>`;
+      </div>
+    </a>
+  </div>`;
   });
 }

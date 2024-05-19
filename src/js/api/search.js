@@ -57,7 +57,6 @@ export function attachSearchEventListener() {
     searchField.addEventListener("input", function () {
       const query = this.value.trim();
       search(query);
-      console.log("Search executed for:", query);
     });
   } else {
     searchField.addEventListener("keydown", function (event) {

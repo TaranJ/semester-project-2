@@ -29,7 +29,6 @@ export async function updateProfile(profileData) {
     }
 
     const responseData = await response.json();
-    console.log("Profile updated successfully:", responseData);
     return responseData;
   } catch (error) {
     console.error("Error updating profile:", error.message);

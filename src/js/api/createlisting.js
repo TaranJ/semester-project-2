@@ -26,7 +26,6 @@ export async function createListing(listingData) {
     }
 
     const responseData = await response.json();
-    console.log("Listing created successfully:", responseData);
     return responseData;
   } catch (error) {
     console.error("Error creating listing:", error.message);
