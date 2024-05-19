@@ -42,10 +42,11 @@ export async function displayListings() {
 export function createHTMLListings(listings) {
   // Check the current location
   const currentPath = window.location.pathname;
+  const isFeedPage = currentPath.includes("feed");
   let maxListings = 20; // Default to 20
 
   // Set maxListings based on the current page
-  if (currentPath === "/feed.html") {
+  if (isFeedPage) {
     maxListings = 40;
   } else {
     maxListings = 4;
