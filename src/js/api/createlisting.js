@@ -1,12 +1,12 @@
 import { load } from "../storage/load.js";
+import { uploadErr } from "../ui/constants.js";
 import { APIBase, APIKey, listingsURL } from "./constants.js";
 
 /**
- * Creates a new post by sending a POST request to the server.
+ * Creates a new listing by sending a POST request to the server.
  * @async
- * @param {object} postData - The data for the new post.
- * @returns {Promise<object>} A Promise that resolves with the response data
- * from the server upon successful creation of the post.
+ * @param {object} listingData - The data for the new listing.
+ * @returns {Promise<object>} A Promise that resolves with the response data from the server upon successful creation of the listing.
  * @throws {Error} If the request fails or an error occurs during processing.
  */
 export async function createListing(listingData) {
@@ -42,7 +42,16 @@ export const newData = {
   media: [],
 };
 
-// Function to handle form submission
+/**
+ * Handles the form submission for creating a new listing.
+ * Prevents the default form submission behavior, retrieves form data,
+ * populates the new listing data object, and attempts to create the listing.
+ * Redirects to the profile page upon successful creation.
+ * @async
+ * @param {Event} event - The form submission event.
+ * @returns {Promise<void>} A Promise that resolves after the listing creation process is completed.
+ * @throws {Error} If the listing creation fails.
+ */
 export async function handleListingCreation(event) {
   event.preventDefault(); // Prevent the default form submission behavior
 
@@ -52,7 +61,7 @@ export async function handleListingCreation(event) {
   const listingDeadline = document.getElementById("deadline").value;
   const mediaUrl = document.getElementById("media").value;
 
-  // Populate newPostData object with form data
+  // Populate newData object with form data
   newData.title = listingTitle;
   newData.description = listingDescription;
   newData.endsAt = listingDeadline;
@@ -62,12 +71,15 @@ export async function handleListingCreation(event) {
     await createListing(newData);
     window.location.href = "/profile.html";
   } catch (error) {
-    // uploadErr.classList.remove("d-none");
+    // display an error message to the user
+    uploadErr.classList.remove("d-none");
     console.error(error);
   }
 }
 
-// Adds an event listener to the form with the ID "createPost" to handle post creation.
+/**
+ * Sets up an event listener for the form with the ID "createListing" to handle listing creation.
+ */
 export function setUploadListener() {
   document.getElementById("createListing").addEventListener("submit", handleListingCreation);
 }

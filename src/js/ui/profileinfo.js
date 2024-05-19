@@ -5,11 +5,15 @@ import { setEditProfileListener } from "./edit.js";
 import { displayError } from "./error.js";
 import { createHTMLListings } from "./listings.js";
 
+/**
+ * Displays the user's profile information.
+ * Fetches the user's profile data and updates the DOM with the profile picture, name, and credits.
+ * Provides buttons for editing the profile, creating a new auction, and logging out.
+ * @async
+ */
 export async function displayProfile() {
   try {
     const profile = await getProfile();
-    // Calls a function to update the DOM with the profile information
-
     createHTMLForProfile(profile);
   } catch (error) {
     console.error("Error displaying profile:", error);
@@ -18,9 +22,8 @@ export async function displayProfile() {
 
 /**
  * Generates HTML content to display the user's profile information.
- * Inserts the user's profile picture, name, and optionally bio into the designated profile container element.
- *
- * @param {object} profile - The user's profile data containing name, avatar URL, and optionally bio.
+ * Inserts the user's profile picture, name, credits, and action buttons into the designated profile container element.
+ * @param {object} profile - The user's profile data containing name, avatar URL, credits, and optionally bio.
  */
 export async function createHTMLForProfile(profile) {
   console.log(profile);
@@ -50,10 +53,18 @@ export async function createHTMLForProfile(profile) {
   setLogoutListener();
 }
 
+/**
+ * Sets up a click event listener for the logout button.
+ */
 export function setLogoutListener() {
   document.getElementById("logout-btn").addEventListener("click", logout);
 }
 
+/**
+ * Displays the user's listings on their profile page.
+ * Fetches the listings associated with the user's profile and displays them.
+ * @async
+ */
 export async function displayProfileListings() {
   try {
     const result = await getListingsForProfile();

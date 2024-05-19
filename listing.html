@@ -57,7 +57,12 @@
             >
             <input type="number" class="p-2 opacity-50" id="bid" required />
           </div>
-
+          <div class="row justify-content-center p-0 d-none" id="bid-error">
+            <div class="form-error bg-danger text-white p-2">
+              Error placing bid. Make sure you have enough balance to bid, and
+              that you are bidding higher than the current bid.
+            </div>
+          </div>
           <button
             class="btn btn-custom text-white text-uppercase rounded-pill m-5 mb-0"
             id="post-btn"
