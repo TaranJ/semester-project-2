@@ -1,7 +1,9 @@
 import { logout } from "../api/auth/logout.js";
-import { getProfile } from "../api/fetch.js";
-import { meta, profileContainer } from "./constants.js";
+import { getListingsForProfile, getProfile } from "../api/fetch.js";
+import { latestAuctions, loader, meta, profileContainer } from "./constants.js";
 import { setEditProfileListener } from "./edit.js";
+import { displayError } from "./error.js";
+import { createHTMLListings } from "./listings.js";
 
 export async function displayProfile() {
   try {
@@ -22,8 +24,10 @@ export async function displayProfile() {
  */
 export async function createHTMLForProfile(profile) {
   console.log(profile);
-  meta.content = `${profile.data.name}'s profile on Vintage Charm Bids
+  meta.content = `${profile.data.name}'s profile on Vintage Charm Bids. ${profile.data.name} is part of our community of enthusiasts. Join us to place your bids, and find your next cherished item today!
   `;
+
+  document.title = `Vintage Charm Bids | ${profile.data.name}`;
 
   profileContainer.innerHTML = `<div class="d-flex flex-column align-items-center gap-3">
     <div>
@@ -48,4 +52,19 @@ export async function createHTMLForProfile(profile) {
 
 export function setLogoutListener() {
   document.getElementById("logout-btn").addEventListener("click", logout);
+}
+
+export async function displayProfileListings() {
+  try {
+    const result = await getListingsForProfile();
+    const posts = result.data;
+
+    loader.style.display = "none";
+    latestAuctions.classList.remove("d-none");
+    createHTMLListings(posts);
+  } catch (error) {
+    loader.style.display = "none";
+    latestAuctions.innerHTML += displayError(`Something went wrong ˙◠˙ <br> Please try again later!`);
+    console.error("Error displaying posts:", error);
+  }
 }

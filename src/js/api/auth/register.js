@@ -47,6 +47,7 @@ export async function onRegister(event) {
   const password = event.target.password.value;
 
   await register(name, email, password);
+  window.location.href = "/login.html";
 }
 
 // Sets up a listener for the register form submission event.

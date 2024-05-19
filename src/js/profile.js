@@ -1,3 +1,6 @@
-import { displayProfile } from "./ui/profileinfo.js";
+import { getListingsForProfile } from "./api/fetch.js";
+import { displayProfile, displayProfileListings } from "./ui/profileinfo.js";
 
 displayProfile();
+getListingsForProfile();
+displayProfileListings();

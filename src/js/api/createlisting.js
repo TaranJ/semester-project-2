@@ -60,7 +60,7 @@ export async function handleListingCreation(event) {
 
   try {
     await createListing(newData);
-    window.location.href = "/feed.html";
+    window.location.href = "/profile.html";
   } catch (error) {
     // uploadErr.classList.remove("d-none");
     console.error(error);
