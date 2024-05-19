@@ -37,6 +37,7 @@ export async function register(name, email, password) {
  * Prevents the default form submission behavior.
  * Retrieves the name, email, and password from the form fields.
  * Attempts to register a new user using the provided data.
+ * Redirects the user to the login page upon successful registration.
  * @async
  * @param {Event} event - The registration event.
  * @returns {Promise<void>} A Promise that resolves after the registration process is completed.
@@ -51,7 +52,9 @@ export async function onRegister(event) {
   window.location.href = "/login.html";
 }
 
-// Sets up a listener for the register form submission event.
+/**
+ * Sets up a listener for the register form submission event.
+ */
 export function setRegisterListener() {
   document.getElementById("signUp").addEventListener("submit", onRegister);
 }

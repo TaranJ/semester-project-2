@@ -10,3 +10,5 @@ export const loader = document.querySelector(".loader");
 export const latestAuctions = document.querySelector(".latest-auctions");
 export const errSignup = document.getElementById("signup-error");
 export const errLogin = document.getElementById("login-error");
+export const errBid = document.getElementById("bid-error");
+export const uploadErr = document.getElementById("upload-error");

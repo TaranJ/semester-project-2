@@ -23,7 +23,7 @@ export async function onLogin(event) {
  * Logs in a user using the provided email and password.
  * Sends a POST request to the server with the user's credentials.
  * Saves the access token and user profile to local storage upon successful login.
- * Redirects the user to the feed page after successful login.
+ * Redirects the user to the profile page after successful login.
  * @async
  * @param {string} email - The email address of the user.
  * @param {string} password - The password of the user.
@@ -48,11 +48,13 @@ export async function login(email, password) {
     errLogin.classList.remove("d-none");
     throw new Error("Invalid email or password. Please try again.");
   } else {
-    throw new Error("Could not login the account");
+    throw new Error("Could not login to the account");
   }
 }
 
-// Sets up a listener for the login form submission event.
+/**
+ * Sets up a listener for the login form submission event.
+ */
 export function setLoginListener() {
   document.getElementById("logIn").addEventListener("submit", onLogin);
 }

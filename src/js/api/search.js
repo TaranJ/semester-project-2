@@ -2,6 +2,13 @@ import { searchField } from "../ui/constants.js";
 import { createHTMLListings, feedContainer } from "../ui/listings.js";
 import { getListings } from "./fetch.js";
 
+/**
+ * Searches for listings that match the query and updates the UI with the filtered results.
+ * @async
+ * @param {string} query - The search query to filter listings.
+ * @returns {Promise<void>} A Promise that resolves when the search process is completed.
+ * @throws {Error} If the search process fails.
+ */
 export async function search(query) {
   try {
     const result = await getListings();
@@ -30,12 +37,23 @@ export async function search(query) {
   }
 }
 
+/**
+ * Clears the previous posts from the feed container in the DOM.
+ */
 export function clearPreviousPosts() {
   feedContainer.innerHTML = "";
 }
 
+/**
+ * Attaches an event listener to the search field to handle search queries.
+ * If the current page is the feed page, it listens for input events.
+ * Otherwise, it listens for the Enter key press to redirect to the feed page with the query.
+ */
 export function attachSearchEventListener() {
-  if (window.location.pathname === "/feed.html") {
+  const currentPath = window.location.pathname;
+  const isFeedPage = currentPath.includes("feed");
+
+  if (isFeedPage) {
     searchField.addEventListener("input", function () {
       const query = this.value.trim();
       search(query);

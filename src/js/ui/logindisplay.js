@@ -1,6 +1,10 @@
 import { load } from "../storage/load.js";
 import { biddingContainer, createForm, loginContainer } from "./constants.js";
 
+/**
+ * Checks if a user is logged in by checking the presence of a user profile in the local storage.
+ * If the user is logged in, hides the login container.
+ */
 export function checkIfLoggedIn() {
   const localProfile = load("profile");
   if (localProfile && localProfile.name) {
@@ -8,6 +12,10 @@ export function checkIfLoggedIn() {
   }
 }
 
+/**
+ * Handles the scenario where there is no user logged in for creating a new post.
+ * Updates the create form HTML to prompt the user to log in or register.
+ */
 export function handleNoUserForPostCreation() {
   const localProfile = load("profile");
   if (!localProfile || !localProfile.name) {
@@ -21,6 +29,10 @@ export function handleNoUserForPostCreation() {
   }
 }
 
+/**
+ * Handles the scenario where there is no user logged in for bidding on an auction.
+ * Updates the bidding container HTML to prompt the user to log in or register.
+ */
 export function handleNoUserForBidding() {
   biddingContainer.classList.remove("d-none");
   biddingContainer.innerHTML = `<p class="text-center align-content-end fs-5">Log in or register to bid on an auction</p>

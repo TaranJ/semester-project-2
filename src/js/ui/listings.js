@@ -6,21 +6,25 @@ import { displayError } from "./error.js";
 export const feedContainer = document.querySelector(".feed-container");
 
 /**
- * Fetches and displays posts. It also checks for a search query in the URL parameters,
- * and if found, filters the displayed posts by this query.
+ * Fetches and displays listings. Checks for a search query in the URL parameters
+ * and filters the displayed listings based on the query, if present.
  * @async
- * @returns {Promise<void>} A Promise that resolves once posts have been fetched and displayed,
+ * @returns {Promise<void>} A Promise that resolves once listings have been fetched and displayed,
  * or filtered and displayed based on a search query.
  */
 export async function displayListings() {
   try {
+    // Fetch listings data
     const result = await getListings();
     const posts = result.data;
 
-    // Sort posts by created date in descending order (newest first)
+    // Sort listings by created date in descending order (newest first)
     posts.sort((a, b) => new Date(b.created) - new Date(a.created));
 
+    // Hide loader once listings are fetched
     loader.style.display = "none";
+
+    // Display listings with or without search query
     createHTMLListings(posts);
 
     // Retrieve the search query from the URL parameter
@@ -28,19 +32,25 @@ export async function displayListings() {
     const urlParams = new URLSearchParams(queryString);
     const query = urlParams.get("query");
 
-    // If a search query exists, filter the posts
+    // If a search query exists, filter the listings
     if (query) {
       search(query);
     }
   } catch (error) {
+    // Display error message if fetching listings fails
     loader.style.display = "none";
     feedContainer.innerHTML += displayError(`Something went wrong ˙◠˙ <br> Please try again later!`);
     console.error("Error displaying posts:", error);
   }
 }
 
+/**
+ * Creates HTML markup for displaying listings based on the provided data.
+ * The number of listings displayed is determined by the current page.
+ * @param {Array} listings - An array of listing objects to be displayed.
+ */
 export function createHTMLListings(listings) {
-  // Check the current location
+  // Determine the maximum number of listings to display based on the current page
   const currentPath = window.location.pathname;
   const isFeedPage = currentPath.includes("feed");
   let maxListings = 20; // Default to 20
