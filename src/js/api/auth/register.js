@@ -1,3 +1,4 @@
+import { errSignup } from "../../ui/constants.js";
 import { APIBase, registerURL } from "../constants.js";
 
 /**
@@ -24,7 +25,7 @@ export async function register(name, email, password) {
   if (response.ok) {
     return await response.json();
   } else if (response.status === 400) {
-    // errSignup.classList.remove("d-none");
+    errSignup.classList.remove("d-none");
     throw new Error("Only stud.noroff.no emails are allowed to register");
   } else {
     throw new Error("could not register the account");
