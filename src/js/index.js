@@ -5,12 +5,3 @@ import { checkIfLoggedIn } from "./ui/logindisplay.js";
 checkIfLoggedIn();
 attachSearchEventListener();
 displayListings();
-
-document.addEventListener("DOMContentLoaded", function () {
-  const navbarToggler = document.getElementById("navbar-toggler");
-  const navbarMenu = document.getElementById("navbarMenu");
-
-  navbarToggler.addEventListener("click", function () {
-    navbarMenu.classList.toggle("show");
-  });
-});
