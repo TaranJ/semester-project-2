@@ -23,7 +23,9 @@ export function createHTMLListing(listing) {
   const newDate = new Date(listing.endsAt);
   const date = newDate.toLocaleDateString("en-GB");
 
-  meta.content = ` Check out ${listing.seller.name}'s listing: ${listing.title}. Join us at Vintage Charm Bids to place your bid now!`;
+  meta.content = ` Check out ${listing.seller.name}'s auction listing: ${listing.title}! Create an account to start bidding on this item and other unique vintage collectibles`;
+
+  document.title = `Vintage Charm Bids | ${listing.title}`;
 
   // Calculate the highest bid amount
   const highestBid = listing.bids.length > 0 ? Math.max(...listing.bids.map((bid) => bid.amount)) : "No bids yet";

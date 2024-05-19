@@ -22,8 +22,10 @@ export async function displayProfile() {
  */
 export async function createHTMLForProfile(profile) {
   console.log(profile);
-  meta.content = `${profile.data.name}'s profile on Vintage Charm Bids
+  meta.content = `${profile.data.name}'s profile on Vintage Charm Bids. ${profile.data.name} is part of our community of enthusiasts. Join us to place your bids, and find your next cherished item today!
   `;
+
+  document.title = `Vintage Charm Bids | ${profile.data.name}`;
 
   profileContainer.innerHTML = `<div class="d-flex flex-column align-items-center gap-3">
     <div>
