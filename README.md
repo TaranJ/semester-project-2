@@ -2,6 +2,8 @@
 
 ## Vintage Charm Bids
 
+![image](https://taranj.github.io/portfolio2/assets/vintagecharmbids-CO-Yfcx3.jpg)
+
 ### Description
 
 This is a website for an imagined auction platform called Vintage Charm Bids. Designing and creating it was a semester project for the front-end course at Noroff School of technology and digital media
